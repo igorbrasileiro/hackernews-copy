@@ -54,7 +54,7 @@ const menuLinks = [
 
 function Header() {
   return (
-    <header className="bg-orange p-[2px] text-[10pt] leading-[12px] flex justify-between">
+    <header className="bg-main p-[2px] text-[10pt] leading-[12px] flex justify-between">
       <div>
         <Link href="/">
           <a className="w-[20px] mr-1">
