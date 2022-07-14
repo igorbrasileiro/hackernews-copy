@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
+import Header from "./Header";
 
 export const siteTitle = "Hackernews";
 
@@ -17,7 +18,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
           />
         </Head>
 
-        <header>{/* Header goes here */}</header>
+        <Header />
         <main>{children}</main>
         <footer>{/* Footer goes here */}</footer>
       </div>
