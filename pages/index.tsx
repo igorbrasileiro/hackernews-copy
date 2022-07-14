@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
+import NewsList from '../components/NewsList'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
       <section>
+        <NewsList />
       </section>
     </Layout>
   )
