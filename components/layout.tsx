@@ -6,8 +6,8 @@ export const siteTitle = "Hackernews";
 
 export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
-    <div className="lg:m-2">
-      <div className="bg-white sm:w-full lg:w-[85%] lg:mx-auto">
+    <div className="md:m-2">
+      <div className="bg-white sm:w-full md:w-[85%] md:mx-auto">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <link
@@ -19,8 +19,8 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
         </Head>
 
         <Header />
-        <main>{children}</main>
-        <footer>{/* Footer goes here */}</footer>
+        <main className="bg-secondary pt-2">{children}</main>
+        <footer className="bg-secondary">{/* Footer goes here */}</footer>
       </div>
     </div>
   );
