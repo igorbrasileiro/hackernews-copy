@@ -3,7 +3,7 @@ import { fetchNewsItem, NewsItemData } from "./fetchNewsItem";
 import { EnhancedNewItemData } from "./useNewsData";
 
 interface NewsItemWithComments extends EnhancedNewItemData {
-  comments: NewsItemData[];
+  comments?: NewsItemData[];
 }
 
 async function fetchNewsItemAndComments(
@@ -15,15 +15,16 @@ async function fetchNewsItemAndComments(
     throw new Error(`Item with id "${newsId}" was not found`);
   }
 
-  const comments = await Promise.allSettled(
-    newsItem.kids.slice(0, 5).map(fetchNewsItem)
-  );
+  const comments = newsItem.kids
+    ? await Promise.allSettled(newsItem.kids.slice(0, 5).map(fetchNewsItem))
+    : undefined;
+
   const host = newsItem.url ? new URL(newsItem.url).host : undefined;
 
   return {
     ...newsItem,
     host,
-    comments: comments.map((commentRes) => {
+    comments: comments?.map((commentRes) => {
       if (commentRes.status !== "fulfilled") {
         return;
       }

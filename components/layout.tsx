@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
+import Footer from "./Footer";
 import Header from "./Header";
 
 export const siteTitle = "Hacker News";
@@ -20,7 +21,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
 
         <Header />
         <main className="bg-secondary pt-2">{children}</main>
-        <footer className="bg-secondary">{/* Footer goes here */}</footer>
+        <Footer />
       </div>
     </div>
   );
