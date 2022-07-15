@@ -1,27 +1,9 @@
 import Link, { LinkProps } from "next/link";
 import { AnchorHTMLAttributes, PropsWithChildren } from "react";
 import yIcon from "../public/images/y18.gif";
+import MenuLink from "./MenuLink";
 
-interface MenuLinkProps {
-  href: LinkProps["href"];
-  withDivisor?: boolean;
-}
-function MenuLink({
-  href,
-  children,
-  withDivisor,
-}: PropsWithChildren<MenuLinkProps>) {
-  return (
-    <>
-      <Link href={href}>
-        <a className="align-middle">{children}</a>
-      </Link>
-      {withDivisor && <span className="align-middle">{" | "}</span>}
-    </>
-  );
-}
-
-const menuLinks = [
+const MENU_LINK = [
   {
     label: "new",
     href: "/newest",
@@ -72,11 +54,11 @@ function Header() {
           <a className="font-bold align-middle mr-[10px]">Hacker News</a>
         </Link>
 
-        {menuLinks.map(({ href, label }, index) => (
+        {MENU_LINK.map(({ href, label }, index) => (
           <MenuLink
             key={index}
             href={href}
-            withDivisor={index === menuLinks.length - 1 ? false : true}
+            withDivisor={index === MENU_LINK.length - 1 ? false : true}
           >
             {label}
           </MenuLink>
