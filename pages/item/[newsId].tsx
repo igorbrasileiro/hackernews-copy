@@ -3,7 +3,19 @@ import { useRouter } from "next/router";
 import CommentRow from "../../components/CommentRow";
 import Layout, { siteTitle } from "../../components/layout";
 import NewsRow from "../../components/NewsRow";
+import { NewsItemData } from "../../sdk/fetchNewsItem";
 import { useNewsCommentsData } from "../../sdk/useNewsCommentsData";
+
+function getElementPosition(comments: NewsItemData[], index: number) {
+  return document.getElementById(comments[index].id.toString()).offsetTop;
+}
+
+function scrollTo(position: number) {
+  window.scroll({
+    top: position - 10,
+    behavior: "smooth",
+  });
+}
 
 function CommentPage() {
   const router = useRouter();
@@ -16,6 +28,7 @@ function CommentPage() {
   }
 
   const { comments, ...newsItem } = newsItemAndComments;
+  const hasGoTo = comments.length > 1;
 
   return (
     <Layout>
@@ -44,11 +57,43 @@ function CommentPage() {
       <div className="h-12" />
 
       <section className="comment pl-[8px]">
-        {comments.map((comment) => {
-          return <CommentRow key={comment.id} {...comment} />;
+        {comments.map((comment, index) => {
+          const isLast = index === comments.length - 1;
+          const isFirst = index === 0;
+
+          const handleGoToPrev =
+            isFirst || !hasGoTo
+              ? undefined
+              : () => {
+                  const nextElementPos = getElementPosition(
+                    comments,
+                    index - 1
+                  );
+                  scrollTo(nextElementPos);
+                };
+
+          const handleGoToNext =
+            isLast || !hasGoTo
+              ? undefined
+              : () => {
+                  const nextElementPos = getElementPosition(
+                    comments,
+                    index + 1
+                  );
+                  scrollTo(nextElementPos);
+                };
+
+          return (
+            <CommentRow
+              key={comment.id}
+              {...comment}
+              goToNext={handleGoToNext}
+              goToPrev={handleGoToPrev}
+            />
+          );
         })}
       </section>
-      
+
       <div className="h-8" />
     </Layout>
   );

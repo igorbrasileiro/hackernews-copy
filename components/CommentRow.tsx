@@ -3,12 +3,19 @@ import UpArrow from "../public/images/grayarrow.gif";
 import { timeAgo } from "../utils/timeAgo";
 import { useState } from "react";
 
+interface Props extends EnhancedNewItemData {
+  goToNext?: () => void;
+  goToPrev?: () => void;
+}
 
-function CommentRow({ by, time, text, id }: EnhancedNewItemData) {
+function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
   const [collapse, setCollapse] = useState<boolean>(false);
 
   return (
-    <div id={id.toString()} className="text-[#828282] leading-[normal] flex mb-2">
+    <div
+      id={id.toString()}
+      className="text-[#828282] leading-[normal] flex mb-2"
+    >
       <div className="pl-[2px] pt-1 min-h-[14px] min-w-[12px]">
         <span className="block cursor-pointer h-[10px]">
           <img src={UpArrow.src} width={10} height={10} />
@@ -24,8 +31,26 @@ function CommentRow({ by, time, text, id }: EnhancedNewItemData) {
             title={new Date(time).toISOString()}
           >
             {timeAgo(time * 1_000)}
-          </span>{" "}
-          | <button className="hover:underline">next</button>{" "}
+          </span>
+
+          {goToPrev && (
+            <>
+              {" | "}
+              <button className="hover:underline" onClick={goToPrev}>
+                prev
+              </button>
+            </>
+          )}
+          {goToNext && (
+            <>
+              {" | "}
+              <button className="hover:underline" onClick={goToNext}>
+                next
+              </button>
+            </>
+          )}
+          
+          {" "}
           <button
             className="hover:underline"
             onClick={() => setCollapse(!collapse)}
