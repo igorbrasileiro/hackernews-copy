@@ -1,15 +1,16 @@
 import { EnhancedNewItemData } from "../sdk/useNewsData";
 import { timeAgo } from "../utils/timeAgo";
 import UpArrow from "../public/images/grayarrow.gif";
-
-const DATE_NOW = Date.now();
+import Link from "next/link";
 
 interface Props extends EnhancedNewItemData {
-  index: number;
+  index?: number;
   isLast: boolean;
+  isComment?: boolean;
 }
 
 function NewsRow({
+  id,
   title,
   url,
   host,
@@ -19,24 +20,30 @@ function NewsRow({
   descendants,
   index,
   isLast,
+  isComment,
 }: Props) {
   return (
     <div
+      id={id.toString()}
       className={`text-[#828282] text-[10pt] leading-[normal] flex ${
         !isLast ? "mb-[5px]" : ""
       }`}
     >
       {/* TODO: Using fixed width. fix it */}
-      <div className="flex justify-end items-center w-[33px] h-[19px]">
-        <span>{index}.</span>
+      <div
+        className={`flex justify-end items-center ${
+          !isComment ? "w-[33px]" : ""
+        } h-[19px]`}
+      >
+        {!isComment && <span>{index}.</span>}
         <span className="pl-[2px] cursor-pointer">
           <img src={UpArrow.src} width={10} height={10} />
         </span>
       </div>
 
-      <div className="flex flex-col pl-[2px]">
+      <div className={`flex flex-col ${isComment ? 'pl-1' : 'pl-[2px]'}`}>
         {/* Title Row */}
-        <div className="h-[19px] pt-[3px] mb-[1px]">
+        <div className={`h-[19px] pt-[3px] ${isComment ? 'mb-[4px]' : 'mb-[1px]'}`}>
           <a className="text-black visited:text-[#828282]" href={url}>
             {title}
           </a>
@@ -56,14 +63,26 @@ function NewsRow({
             className="hover:underline cursor-pointer"
             title={new Date(time).toISOString()}
           >
-            {timeAgo(DATE_NOW, time * 1_000)}
+            {timeAgo(time * 1_000)}
           </span>
           {" | "}
           <span className="hover:underline cursor-pointer">hide</span>
           {" | "}
-          <a className="hover:underline cursor-pointer">
-            {descendants} comments
-          </a>
+
+          {isComment && (
+            <span className="hover:underline cursor-pointer">past</span>            
+          )}
+          {isComment && " | "}
+          {isComment && (
+            <span className="hover:underline cursor-pointer">favorite</span>            
+          )}
+          {isComment && " | "}
+
+          <Link href={`/item/${id}`}>
+            <a className="hover:underline cursor-pointer">
+              {descendants} comments
+            </a>
+          </Link>
         </div>
       </div>
     </div>

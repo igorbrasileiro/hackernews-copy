@@ -5,3 +5,11 @@
 body {
   font-family: Verdana, Geneva, sans-serif;
 }
+
+.comment p {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+.comment a:link, .comment a:visited {
+  text-decoration: underline;
+}
