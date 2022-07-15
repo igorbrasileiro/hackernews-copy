@@ -1,25 +1,9 @@
 import { useEffect, useState } from "react";
+import { fetchNewsItem, NewsItemData } from "./fetchNewsItem";
 
-interface NewItemData {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[];
-  score: number;
-  time: number;
-  title: string;
-  type: "story" | "job" | "comment" | "poll" | "pollopt";
-  url: string;
-}
 
-interface EnhancedNewItemData extends NewItemData {
+export interface EnhancedNewItemData extends NewsItemData {
   host?: string
-}
-
-async function fetchNewItem(newId: number) {
-  return fetch(`https://hacker-news.firebaseio.com/v0/item/${newId}.json`).then(
-    (res) => res.json()
-  );
 }
 
 async function fetchNews(): Promise<EnhancedNewItemData[]> {
@@ -32,8 +16,8 @@ async function fetchNews(): Promise<EnhancedNewItemData[]> {
     }
   ).then((res) => res.json());
 
-  const newsDataList = await Promise.allSettled<NewItemData>(
-    newsDataIdList.slice(0, 30).map(fetchNewItem)
+  const newsDataList = await Promise.allSettled<NewsItemData>(
+    newsDataIdList.slice(0, 30).map(fetchNewsItem)
   );
 
   return newsDataList.map((res) => {
