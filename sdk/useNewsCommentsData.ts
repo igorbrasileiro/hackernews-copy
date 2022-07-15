@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchNewsItem, NewsItemData } from "./fetchNewsItem";
-import { EnhancedNewItemData } from "./useNewsData";
+import type { EnhancedNewItemData } from "./fetchNewsItem";
 
 interface NewsItemWithComments extends EnhancedNewItemData {
   comments?: NewsItemData[];

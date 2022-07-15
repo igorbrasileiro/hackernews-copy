@@ -1,8 +1,12 @@
-import { useNewsData } from "../sdk/useNewsData";
+import { NewsType, useNewsData } from "../sdk/useNewsData";
 import NewRow from "./NewsRow";
 
-function NewsList() {
-  const newsData = useNewsData();
+interface Props {
+  newsType: NewsType
+}
+
+function NewsList({ newsType }: Props) {
+  const newsData = useNewsData(newsType);
 
   return (
     <>

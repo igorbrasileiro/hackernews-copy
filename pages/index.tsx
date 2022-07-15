@@ -9,7 +9,7 @@ export default function Home() {
         <title>{siteTitle}</title>
       </Head>
       <section>
-        <NewsList />
+        <NewsList newsType="topstories" />
         <div className="block h-[10px]" />
         <button className="text-[10pt] leading-[normal] pl-[31px]">More</button>
         <div className="block h-[10px]" />

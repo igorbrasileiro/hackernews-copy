@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
-import { fetchNewsItem, NewsItemData } from "./fetchNewsItem";
+import {
+  EnhancedNewItemData,
+  fetchNewsItem,
+  NewsItemData,
+} from "./fetchNewsItem";
 
+export type NewsType =
+  | "topstories"
+  | "newstories"
+  | "beststories"
+  | "askstories"
+  | "showstories"
+  | "jobstories";
 
-export interface EnhancedNewItemData extends NewsItemData {
-  host?: string
-}
-
-async function fetchNews(): Promise<EnhancedNewItemData[]> {
+async function fetchNews(
+  newsType: NewsType = "topstories"
+): Promise<EnhancedNewItemData[]> {
   const newsDataIdList = await fetch(
-    "https://hacker-news.firebaseio.com/v0/topstories.json",
+    `https://hacker-news.firebaseio.com/v0/${newsType}.json`,
     {
       headers: {
         "content-type": "application/json",
@@ -33,12 +42,12 @@ async function fetchNews(): Promise<EnhancedNewItemData[]> {
   });
 }
 
-export function useNewsData() {
+export function useNewsData(newsType: NewsType) {
   const [newsData, setNewsData] = useState<EnhancedNewItemData[]>([]);
   useEffect(function fetchNewsData() {
     let cancel = false;
     async function effect() {
-      const newsData = await fetchNews();
+      const newsData = await fetchNews(newsType);
 
       if (cancel) {
         return;

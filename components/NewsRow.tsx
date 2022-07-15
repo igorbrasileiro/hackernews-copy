@@ -1,4 +1,4 @@
-import { EnhancedNewItemData } from "../sdk/useNewsData";
+import { EnhancedNewItemData } from "../sdk/fetchNewsItem";
 import { timeAgo } from "../utils/timeAgo";
 import UpArrow from "../public/images/grayarrow.gif";
 import Link from "next/link";

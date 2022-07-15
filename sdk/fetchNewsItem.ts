@@ -11,6 +11,9 @@ export interface NewsItemData {
   text?: string
 }
 
+export interface EnhancedNewItemData extends NewsItemData {
+  host?: string
+}
 
 export async function fetchNewsItem(newsId: number | string): Promise<NewsItemData> {
   return fetch(`https://hacker-news.firebaseio.com/v0/item/${newsId}.json`).then(

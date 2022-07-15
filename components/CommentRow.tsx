@@ -1,4 +1,4 @@
-import { EnhancedNewItemData } from "../sdk/useNewsData";
+import { EnhancedNewItemData } from "../sdk/fetchNewsItem";
 import UpArrow from "../public/images/grayarrow.gif";
 import { timeAgo } from "../utils/timeAgo";
 import { useState } from "react";
@@ -49,7 +49,7 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
               </button>
             </>
           )}
-          
+
           {" "}
           <button
             className="hover:underline"
