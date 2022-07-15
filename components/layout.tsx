@@ -2,7 +2,7 @@ import Head from "next/head";
 import { PropsWithChildren } from "react";
 import Header from "./Header";
 
-export const siteTitle = "Hackernews";
+export const siteTitle = "Hacker News";
 
 export default function Layout({ children }: PropsWithChildren<{}>) {
   return (
