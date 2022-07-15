@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchNewsItem, NewsItemData } from "./fetchNewsItem";
+import { EnhancedNewItemData } from "./useNewsData";
 
-interface NewsItemWithComments extends NewsItemData {
+interface NewsItemWithComments extends EnhancedNewItemData {
   comments: NewsItemData[];
 }
 
@@ -17,9 +18,11 @@ async function fetchNewsItemAndComments(
   const comments = await Promise.allSettled(
     newsItem.kids.slice(0, 5).map(fetchNewsItem)
   );
+  const host = newsItem.url ? new URL(newsItem.url).host : undefined;
 
   return {
     ...newsItem,
+    host,
     comments: comments.map((commentRes) => {
       if (commentRes.status !== "fulfilled") {
         return;

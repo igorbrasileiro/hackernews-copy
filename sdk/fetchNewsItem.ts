@@ -8,6 +8,7 @@ export interface NewsItemData {
   title: string;
   type: "story" | "job" | "comment" | "poll" | "pollopt";
   url: string;
+  text?: string
 }
 
 
