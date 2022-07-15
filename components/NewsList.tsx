@@ -1,5 +1,5 @@
-import { useNewsData } from "../../sdk/useNewsData";
-import NewRow from "../NewsRow";
+import { useNewsData } from "../sdk/useNewsData";
+import NewRow from "./NewsRow";
 
 function NewsList() {
   const newsData = useNewsData();

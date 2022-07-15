@@ -1,6 +1,7 @@
 /**
  * Code from this StackOverflow answer: https://stackoverflow.com/a/33487313
  */
+const DATE_NOW = Date.now();
 
 const epochs: [string, number][] = [
   ['year', 31536000],
@@ -23,8 +24,8 @@ const getDuration = (timeAgoInSeconds: number) => {
   }
 };
 
-export const timeAgo = (now: number, date: number) => {
-  const timeAgoInSeconds = Math.trunc((now - date) / 1000);
+export const timeAgo = (date: number) => {
+  const timeAgoInSeconds = Math.trunc((DATE_NOW - date) / 1000);
   const {interval, epoch} = getDuration(timeAgoInSeconds);
   const suffix = interval === 1 ? '' : 's';
   return `${interval} ${epoch}${suffix} ago`;
