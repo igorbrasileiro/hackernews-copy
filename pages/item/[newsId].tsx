@@ -29,6 +29,7 @@ function CommentPage() {
 
   const { comments, ...newsItem } = newsItemAndComments;
   const hasGoTo = comments?.length > 1;
+  const isJobType = newsItem.type === "job";
 
   return (
     <Layout>
@@ -38,23 +39,32 @@ function CommentPage() {
         </title>
       </Head>
 
-      <section className="pt-1 pl-2">
-        <NewsRow isLast={false} isComment {...newsItem} />
-        <div className="font-[monospace] text-[10pt] pt-[12px] pl-[17px] mb-1">
-          <textarea
-            name="comment"
-            aria-label="comment textarea"
-            rows={8}
-            cols={80}
-            className="block border border-[#767676] rounded-[2px] p-[2px] mb-4 h-[126px]"
-          />
-          <button className="block bg-[#f0f0f0] leading-[normal] border border-[#767676] rounded-[3px] py-[1px] px-[6px] h-[21px]">
-            add comment
-          </button>
-        </div>
+      <section className={`pt-1 ${isJobType ? "" : "pl-2"} `}>
+        <NewsRow
+          isLast={false}
+          isComment={!isJobType}
+          {...newsItem}
+          showAuthor={false}
+          showIndex={false}
+          showComments={false}
+        />
+        {!isJobType && (
+          <div className="font-[monospace] text-[10pt] pt-[12px] pl-[17px] mb-1">
+            <textarea
+              name="comment"
+              aria-label="comment textarea"
+              rows={8}
+              cols={80}
+              className="block border border-[#767676] rounded-[2px] p-[2px] mb-4 h-[126px]"
+            />
+            <button className="block bg-[#f0f0f0] leading-[normal] border border-[#767676] rounded-[3px] py-[1px] px-[6px] h-[21px]">
+              add comment
+            </button>
+          </div>
+        )}
       </section>
 
-      <div className="h-12" />
+      {!isJobType && <div className="h-12" />}
 
       <section className="comment pl-[8px]">
         {comments?.map((comment, index) => {
