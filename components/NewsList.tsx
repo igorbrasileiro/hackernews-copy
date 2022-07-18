@@ -15,7 +15,7 @@ function NewsList({ newsType }: Props) {
           <NewRow
             key={index}
             {...newsItemData}
-            isLast={index !== newsData.length - 1}
+            isLast={index === newsData.length - 1}
             index={index + 1}
           />
         );

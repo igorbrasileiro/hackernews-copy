@@ -26,7 +26,7 @@ function NewsRow({
     <div
       id={id.toString()}
       className={`text-[#828282] text-[10pt] leading-[normal] flex ${
-        !isLast ? "mb-[5px]" : ""
+        !isLast ? "mb-[4px]" : ""
       }`}
     >
       {/* TODO: Using fixed width. fix it */}
