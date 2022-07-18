@@ -2,6 +2,7 @@ import { EnhancedNewItemData } from "../sdk/fetchNewsItem";
 import UpArrow from "../public/images/grayarrow.gif";
 import { timeAgo } from "../utils/timeAgo";
 import { useState } from "react";
+import Link from "next/link";
 
 interface Props extends EnhancedNewItemData {
   goToNext?: () => void;
@@ -26,13 +27,11 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
         {/* Comment Info */}
         <div className="text-[8pt] mb-2">
           {by}{" "}
-          <span
-            className="hover:underline"
-            title={new Date(time).toISOString()}
-          >
-            {timeAgo(time * 1_000)}
-          </span>
-
+          <Link href={`/item/${id}`}>
+            <a className="hover:underline" title={new Date(time).toISOString()}>
+              {timeAgo(time * 1_000)}
+            </a>
+          </Link>
           {goToPrev && (
             <>
               {" | "}
@@ -48,9 +47,7 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
                 next
               </button>
             </>
-          )}
-
-          {" "}
+          )}{" "}
           <button
             className="hover:underline"
             onClick={() => setCollapse(!collapse)}

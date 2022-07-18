@@ -55,16 +55,19 @@ function NewsRow({
       <div className={`flex flex-col ${isComment ? "pl-1" : "pl-[2px]"}`}>
         {/* Title Row */}
         <div className={`h-[19px] pt-[3px] ${isComment ? "mb-1" : "mb-[1px]"}`}>
-          <a className="text-black visited:text-[#828282]" href={url}>
+          {!isComment && <a className="text-black visited:text-[#828282]" href={url}>
             {title}
-          </a>
-          <span className="text-[8pt] pl-[2px]">
-            (
-            <a className="hover:underline" href={host}>
-              {host}
-            </a>
-            )
-          </span>
+          </a>}
+          {isComment && <span className="text-black text-[9pt]" dangerouslySetInnerHTML={{ __html: title }} />}
+          {host && (
+            <span className="text-[8pt] pl-[2px]">
+              (
+              <a className="hover:underline" href={url}>
+                {host}
+              </a>
+              )
+            </span>
+          )}
         </div>
 
         {/* Info Row */}

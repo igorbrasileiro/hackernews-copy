@@ -41,9 +41,10 @@ function CommentPage() {
 
       <section className={`pt-1 ${isJobType ? "" : "pl-2"} `}>
         <NewsRow
+          {...newsItem}
+          title={newsItem.title ?? newsItem.text}
           isLast={false}
           isComment={!isJobType}
-          {...newsItem}
           showAuthor={false}
           showIndex={false}
           showComments={false}
