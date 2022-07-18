@@ -36,7 +36,9 @@ async function fetchNews(
     }
 
     const itemData = res.value;
-    const host = itemData.url ? new URL(itemData.url).host : undefined;
+    const host = itemData.url
+      ? new URL(itemData.url).host.replace("www.", "")
+      : undefined;
 
     return { ...itemData, host };
   });

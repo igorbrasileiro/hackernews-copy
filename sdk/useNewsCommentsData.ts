@@ -19,7 +19,9 @@ async function fetchNewsItemAndComments(
     ? await Promise.allSettled(newsItem.kids.slice(0, 5).map(fetchNewsItem))
     : undefined;
 
-  const host = newsItem.url ? new URL(newsItem.url).host : undefined;
+  const host = newsItem.url
+    ? new URL(newsItem.url).host.replace("www.", "")
+    : undefined;
 
   return {
     ...newsItem,
