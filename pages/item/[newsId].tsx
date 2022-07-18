@@ -56,7 +56,7 @@ function CommentPage() {
               aria-label="comment textarea"
               rows={8}
               cols={80}
-              className="block border border-[#767676] rounded-[2px] p-[2px] mb-4 h-[126px]"
+              className="block border border-[#767676] rounded-[2px] p-[2px] mb-4 h-[126px] w-[90%] sm:w-inherit"
             />
             <button className="block bg-[#f0f0f0] leading-[normal] border border-[#767676] rounded-[3px] py-[1px] px-[6px] h-[21px]">
               add comment

@@ -33,15 +33,15 @@ function NewsRow({
   return (
     <div
       id={id.toString()}
-      className={`text-[#828282] text-[10pt] leading-[normal] flex ${
-        !isLast ? "mb-[4px]" : ""
+      className={`text-[#828282] text-[11pt] leading-[14pt] sm:text-[10pt] sm:leading-[normal] flex ${
+        !isLast ? "sm:mb-[4px]" : ""
       }`}
     >
       {/* TODO: Using fixed width. fix it */}
       {showIndex && (
         <div
           className={`flex justify-end items-center ${
-            !isComment ? "w-[33px]" : ""
+            !isComment ? "min-w-[33px]" : ""
           } h-[19px]`}
         >
           {!isComment && <span>{index}.</span>}
@@ -54,7 +54,7 @@ function NewsRow({
 
       <div className={`flex flex-col ${isComment ? "pl-1" : "pl-[2px]"}`}>
         {/* Title Row */}
-        <div className={`h-[19px] pt-[3px] ${isComment ? "mb-1" : "mb-[1px]"}`}>
+        <div className={`pt-[3px] ${isComment ? "mb-1" : "mb-[1px]"}`}>
           {!isComment && <a className="text-black visited:text-[#828282]" href={url}>
             {title}
           </a>}
@@ -71,7 +71,7 @@ function NewsRow({
         </div>
 
         {/* Info Row */}
-        <div className="text-[7pt]">
+        <div className="text-[9pt] sm:text-[7pt]">
           {showAuthor && (
             <>
               {score} points by <span className="hover:underline">{by}</span>{" "}
