@@ -28,7 +28,7 @@ function CommentPage() {
   }
 
   const { comments, ...newsItem } = newsItemAndComments;
-  const hasGoTo = comments.length > 1;
+  const hasGoTo = comments?.length > 1;
 
   return (
     <Layout>
@@ -57,7 +57,7 @@ function CommentPage() {
       <div className="h-12" />
 
       <section className="comment pl-[8px]">
-        {comments.map((comment, index) => {
+        {comments?.map((comment, index) => {
           const isLast = index === comments.length - 1;
           const isFirst = index === 0;
 

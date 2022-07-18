@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout, { siteTitle } from "../components/layout";
 import NewsList from "../components/NewsList";
 
-function Home() {
+function News() {
   return (
     <Layout>
       <Head>
@@ -18,5 +18,4 @@ function Home() {
   );
 }
 
-
-export default Home
+export default News

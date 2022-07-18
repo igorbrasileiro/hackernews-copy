@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { PropsWithChildren } from "react";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./section/Footer";
+import Header from "./section/Header";
 
 export const siteTitle = "Hacker News";
 
