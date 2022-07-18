@@ -1,7 +1,6 @@
-import Link, { LinkProps } from "next/link";
-import { AnchorHTMLAttributes, PropsWithChildren } from "react";
-import yIcon from "../public/images/y18.gif";
-import MenuLink from "./MenuLink";
+import Link  from "next/link";
+import yIcon from "../../public/images/y18.gif";
+import MenuLink from "../MenuLink";
 
 const MENU_LINK = [
   {
