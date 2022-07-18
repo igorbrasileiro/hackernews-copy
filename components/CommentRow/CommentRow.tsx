@@ -1,6 +1,6 @@
-import { EnhancedNewItemData } from "../sdk/fetchNewsItem";
-import UpArrow from "../public/images/grayarrow.gif";
-import { timeAgo } from "../utils/timeAgo";
+import { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
+import UpArrow from "../../public/images/grayarrow.gif";
+import { timeAgo } from "../../utils/timeAgo";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -49,10 +49,11 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
             </>
           )}{" "}
           <button
+            data-testid="hide-button"
             className="hover:underline"
             onClick={() => setCollapse(!collapse)}
           >
-            [–]
+            [{collapse ? '+' : '-' }]
           </button>
         </div>
 
