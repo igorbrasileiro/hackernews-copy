@@ -1,4 +1,5 @@
-import { NewsType, useNewsData } from "../sdk/useNewsData";
+import type { NewsType } from '../api/fetchNewsByType'
+import { useNewsData } from "../hooks/useNewsData";
 import NewsRow from "./NewsRow";
 
 interface Props {

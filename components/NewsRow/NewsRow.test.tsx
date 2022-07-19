@@ -1,6 +1,6 @@
 import NewsRow from './NewsRow'
 import { render, screen } from "@testing-library/react";
-import type { EnhancedNewItemData } from '../../sdk/fetchNewsItem';
+import type { EnhancedNewItemData } from '../../api/fetchNewsItem';
 
 const newsItem: EnhancedNewItemData = {
   by: 'igor',

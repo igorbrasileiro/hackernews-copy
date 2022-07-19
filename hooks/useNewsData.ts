@@ -1,29 +1,15 @@
 import { useEffect, useState } from "react";
+import { fetchNewsByType, NewsType } from "../api/fetchNewsByType";
 import {
   EnhancedNewItemData,
   fetchNewsItem,
   NewsItemData,
-} from "./fetchNewsItem";
-
-export type NewsType =
-  | "topstories"
-  | "newstories"
-  | "beststories"
-  | "askstories"
-  | "showstories"
-  | "jobstories";
+} from "../api/fetchNewsItem";
 
 async function fetchNews(
   newsType: NewsType = "topstories"
 ): Promise<EnhancedNewItemData[]> {
-  const newsDataIdList = await fetch(
-    `https://hacker-news.firebaseio.com/v0/${newsType}.json`,
-    {
-      headers: {
-        "content-type": "application/json",
-      },
-    }
-  ).then((res) => res.json());
+  const newsDataIdList = await fetchNewsByType(newsType)
 
   const newsDataList = await Promise.allSettled<NewsItemData>(
     newsDataIdList.slice(0, 30).map(fetchNewsItem)

@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import CommentRow from "../../components/CommentRow";
 import Layout, { siteTitle } from "../../components/layout";
 import NewsRow from "../../components/NewsRow";
-import { NewsItemData } from "../../sdk/fetchNewsItem";
-import { useNewsCommentsData } from "../../sdk/useNewsCommentsData";
+import { NewsItemData } from "../../api/fetchNewsItem";
+import { useNewsCommentsData } from "../../hooks/useNewsCommentsData";
 
 function getElementPosition(comments: NewsItemData[], index: number) {
   return document.getElementById(comments[index].id.toString()).offsetTop;

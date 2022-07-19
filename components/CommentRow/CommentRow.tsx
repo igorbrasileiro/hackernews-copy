@@ -1,4 +1,4 @@
-import { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
+import { EnhancedNewItemData } from "../../api/fetchNewsItem";
 import UpArrow from "../../public/images/grayarrow.gif";
 import { timeAgo } from "../../utils/timeAgo";
 import { useState } from "react";
