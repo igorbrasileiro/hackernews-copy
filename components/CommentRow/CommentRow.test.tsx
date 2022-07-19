@@ -1,5 +1,5 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
+import type { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
 import CommentRow from "./CommentRow";
 import React from 'react'
 
