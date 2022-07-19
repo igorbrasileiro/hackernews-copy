@@ -3,13 +3,13 @@ import NewsRow from "./NewsRow";
 
 interface Props {
   newsType: NewsType
-  hideNews?: boolean
+  showHideNews?: boolean
   showIndex?: boolean
   showAuthor?: boolean
   showComments?: boolean
 }
 
-function NewsList({ newsType, showIndex, showAuthor, showComments, hideNews }: Props) {
+function NewsList({ newsType, showIndex, showAuthor, showComments, showHideNews }: Props) {
   const newsData = useNewsData(newsType);
 
   return (
@@ -21,7 +21,7 @@ function NewsList({ newsType, showIndex, showAuthor, showComments, hideNews }: P
             {...newsItemData}
             isLast={index === newsData.length - 1}
             index={index + 1}
-            hideNews={hideNews}
+            showHideNews={showHideNews}
             showIndex={showIndex}
             showAuthor={showAuthor}
             showComments={showComments}

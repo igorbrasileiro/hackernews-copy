@@ -1,13 +1,24 @@
-import { EnhancedNewItemData } from "../sdk/fetchNewsItem";
-import { timeAgo } from "../utils/timeAgo";
-import UpArrow from "../public/images/grayarrow.gif";
+import { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
+import { timeAgo } from "../../utils/timeAgo";
+import UpArrow from "../../public/images/grayarrow.gif";
 import Link from "next/link";
+
+function getComments(descendants: number) {
+  switch(descendants) {
+    case 0:
+      return 'discuss'
+    case 1:
+      return '1 comment'
+    default:
+      return `${descendants} comments`
+  }
+}
 
 interface Props extends EnhancedNewItemData {
   index?: number;
   isLast: boolean;
   isComment?: boolean;
-  hideNews?: boolean;
+  showHideNews?: boolean;
   showIndex?: boolean;
   showAuthor?: boolean;
   showComments?: boolean;
@@ -25,7 +36,7 @@ function NewsRow({
   index,
   isLast,
   isComment,
-  hideNews = true,
+  showHideNews = true,
   showIndex = true,
   showAuthor = true,
   showComments = true,
@@ -74,7 +85,7 @@ function NewsRow({
         <div className="text-[9pt] sm:text-[7pt]">
           {showAuthor && (
             <>
-              {score} points by <span className="hover:underline">{by}</span>{" "}
+              <span>{score}</span> points by <span className="hover:underline">{by}</span>{" "}
             </>
           )}
 
@@ -84,8 +95,8 @@ function NewsRow({
             </a>
           </Link>
 
-          {hideNews && " | "}
-          {hideNews && (
+          {showHideNews && " | "}
+          {showHideNews && (
             <span className="hover:underline cursor-pointer">hide</span>
           )}
 
@@ -102,7 +113,7 @@ function NewsRow({
           {showComments && (
             <Link href={`/item/${id}`}>
               <a className="hover:underline cursor-pointer">
-                {descendants} comments
+                {getComments(descendants)} 
               </a>
             </Link>
           )}
