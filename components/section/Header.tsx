@@ -39,7 +39,9 @@ function Header() {
       <div className="flex items-center">
         <Link href="/">
           <a className="w-[20px] mr-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+              alt="hacker news logo"
               className="inline border-[1px] border-white"
               height={20}
               width={20}

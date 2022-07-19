@@ -58,7 +58,8 @@ function NewsRow({
         >
           {!isComment && <span>{index}.</span>}
           <span className="pl-[2px] cursor-pointer">
-            <img src={UpArrow.src} width={10} height={10} />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img alt="up arrow" src={UpArrow.src} width={10} height={10} />
           </span>
         </div>
       )}

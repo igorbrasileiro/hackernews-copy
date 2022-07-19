@@ -19,7 +19,8 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
     >
       <div className="pl-[2px] pt-1 min-h-[14px] min-w-[12px]">
         <span className="block cursor-pointer h-[10px]">
-          <img src={UpArrow.src} width={10} height={10} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img alt="up arrow" src={UpArrow.src} width={10} height={10} />
         </span>
       </div>
 
@@ -53,7 +54,7 @@ function CommentRow({ by, time, text, id, goToNext, goToPrev }: Props) {
             className="hover:underline"
             onClick={() => setCollapse(!collapse)}
           >
-            [{collapse ? '+' : '-' }]
+            [{collapse ? "+" : "-"}]
           </button>
         </div>
 

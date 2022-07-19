@@ -1,5 +1,5 @@
 import NewsRow from './NewsRow'
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import type { EnhancedNewItemData } from '../../sdk/fetchNewsItem';
 
 const newsItem: EnhancedNewItemData = {
