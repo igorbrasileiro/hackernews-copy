@@ -1,6 +1,6 @@
 import Link from "next/link";
 import yIcon from "../../public/images/y18.gif";
-import MenuLink from "../MenuLink";
+import MenuLink from "../ui/MenuLink";
 
 const MENU_LINK = [
   {

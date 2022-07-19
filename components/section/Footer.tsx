@@ -1,4 +1,4 @@
-import MenuLink from "../MenuLink";
+import MenuLink from "../ui/MenuLink";
 
 const FOOTER_LINKS = [
   {
