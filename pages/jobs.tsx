@@ -8,7 +8,7 @@ function Jobs() {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Jobs | {siteTitle}</title>
       </Head>
       <section>
         <Warning className="pl-[14px]">
@@ -18,7 +18,7 @@ function Jobs() {
         <NewsList
           newsType="jobstories"
           showIndex={false}
-          hideNews={false}
+          showHideNews={false}
           showAuthor={false}
           showComments={false}
         />

@@ -8,7 +8,7 @@ function Show() {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Show | {siteTitle}</title>
       </Head>
       <section>
         <Warning>

@@ -6,7 +6,7 @@ function Newsest() {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>News Link | {siteTitle}</title>
       </Head>
       <section>
         <NewsList newsType="newstories" />

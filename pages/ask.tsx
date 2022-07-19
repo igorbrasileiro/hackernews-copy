@@ -6,10 +6,10 @@ function Ask() {
   return (
     <Layout>
       <Head>
-        <title>{siteTitle}</title>
+        <title>Ask | {siteTitle}</title>
       </Head>
       <section>
-        <NewsList newsType="askstories" hideNews={false} />
+        <NewsList newsType="askstories" showHideNews={false} />
         <div className="block h-[10px]" />
         <button className="text-[10pt] leading-[normal] pl-[34px]">More</button>
         <div className="block h-[10px]" />
