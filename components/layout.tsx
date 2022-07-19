@@ -20,7 +20,7 @@ export default function Layout({ children }: PropsWithChildren<{}>) {
         </Head>
 
         <Header />
-        <main className="bg-secondary pt-2">{children}</main>
+        <main className="bg-secondary pt-2 px-1 sm:px-[0px]">{children}</main>
         <Footer />
       </div>
     </div>
