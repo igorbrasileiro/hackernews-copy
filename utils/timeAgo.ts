@@ -22,6 +22,11 @@ const getDuration = (timeAgoInSeconds: number) => {
           };
       }
   }
+
+  return {
+    interval: 1,
+    epoch: 'second'
+  }
 };
 
 export const timeAgo = (date: number) => {
