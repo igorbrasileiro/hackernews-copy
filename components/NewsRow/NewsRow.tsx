@@ -2,6 +2,7 @@ import { EnhancedNewItemData } from "../../sdk/fetchNewsItem";
 import { timeAgo } from "../../utils/timeAgo";
 import UpArrow from "../../public/images/grayarrow.gif";
 import Link from "next/link";
+import FakeAnchor from "../ui/FakeAnchor";
 
 function getComments(descendants: number) {
   switch(descendants) {
@@ -85,7 +86,7 @@ function NewsRow({
         <div className="text-[9pt] sm:text-[7pt]">
           {showAuthor && (
             <>
-              <span>{score}</span> points by <span className="hover:underline">{by}</span>{" "}
+              <span>{score}</span> points by <FakeAnchor>{by}</FakeAnchor>{" "}
             </>
           )}
 
@@ -97,22 +98,22 @@ function NewsRow({
 
           {showHideNews && " | "}
           {showHideNews && (
-            <span className="hover:underline cursor-pointer">hide</span>
+            <FakeAnchor>hide</FakeAnchor>
           )}
 
           {isComment && " | "}
           {isComment && (
-            <span className="hover:underline cursor-pointer">past</span>
+            <FakeAnchor>past</FakeAnchor>
           )}
           {isComment && " | "}
           {isComment && (
-            <span className="hover:underline cursor-pointer">favorite</span>
+            <FakeAnchor>favorite</FakeAnchor>
           )}
 
           {showComments && " | "}
           {showComments && (
             <Link href={`/item/${id}`}>
-              <a className="hover:underline cursor-pointer">
+              <a className="hover:underline">
                 {getComments(descendants)} 
               </a>
             </Link>
